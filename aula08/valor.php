@@ -10,11 +10,17 @@
 <body>
     <div>
         <?php            
-            $valor = $_GET["v"];
-            $rq = sqrt($valor);
-            echo "A raiz de $valor é igual a " .number_format($rq, 2);
+            $valor = $_GET["v"] ?? 0;
+            if ($valor >= 0) {
+                $rq = sqrt($valor);
+                $format = number_format($rq, 2);
+                echo "A raiz de <strong>$valor</strong> é igual a \u{1F449} <strong>$format</strong>";
+            } else {
+                echo "<p>Valor inválido!</p>";
+                echo "<p>Por favor digite um número positivo para saber sua raiz</p>";
+            }
         ?>        
-        <a href="http://localhost/curso-php/aula08/01execicio.html">Voltar</a>
+        <p><a href="javascript:history.go(-1)">Voltar para página anterior</a></p>
     </div>
 </body>
 </html>
