@@ -24,12 +24,6 @@
                 <option value="6">Sábado</option>
                 <option value="7">Domingo</option>
             </select>
-            <!-- <input type="radio" name="opr" id="dobro" value="1" checked>
-            <label for="dobro">Dobro</label>
-            <input type="radio" name="opr" id="cubo" value="2">
-            <label for="cubo">Cubo</label>
-            <input type="radio" name="opr" id="raiz" value="3">
-            <label for="raiz">Raiz Quadrada</label> -->
             </fieldset>
             <input type="submit" value="Analisar">
         </form>
