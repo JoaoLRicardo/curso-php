@@ -9,13 +9,13 @@
 <body>
     <?php
     $valor1 = $_GET['idade'] ?? 0;
-    $idade = date('Y') - $valor1;
+    $atual = date('Y');
     ?>
     <main>
-        <h1>Somador de Valores</h1>
+        <h1>Verificador</h1>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
             <label for="idade">Ano de nascimento:</label>
-            <input type="number" name="idade" id="idade" placeholder="4 digitos" value="">
+            <input type="number" name="idade" id="idade" placeholder="4 digitos" value="" required>
             <!-- <label for="v2">Valor 2</label>
             <input type="number" name="v2" id="v2" value=""> -->
             <input type="submit" value="Verificar"> 
@@ -24,14 +24,20 @@
     <section id="resultado">
         <h2>Resultado da Soma</h2>
         <?php
-        if ($idade < 16) {            
-            $tipoVoto =  "não é permitido votar!";
-        } elseif ($idade >= 16 && $idade < 18  || $idade > 65) {
-            $tipoVoto = "o voto é opcional.";
+        $idade = date('Y') - $valor1;
+        if ($valor1 && $idade > 0) {            
+            echo "Você nasceu em $valor1 e tera $idade anos em $atual. <br/>";
+            if ($idade > 18) {
+                $v =  "ja pode votar";
+                $d =  "ja pode dirigir!";
+            } else {
+                $v = "não pode votar";
+                $d =  "não pode dirigir!";
+            }
+            echo "Com $idade anos você $v e também $d";
         } else {
-            $tipoVoto = "é obrigatório votar!";
+            echo "Por favor digite um valor válido!";
         }
-        echo "Com $idade anos $tipoVoto"
         ?>
     </section>
     
