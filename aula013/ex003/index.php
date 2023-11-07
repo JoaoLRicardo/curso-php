@@ -13,29 +13,27 @@
         ?>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
         <legend>Selecione um número</legend>
-        <select name="num" id="num">
-            <?php 
-            while ($c <= 10) {
-                echo "<option value='$c'>$c </option>";
-                $c ++;
-            }
-            ?>
-        </select>
+        <label for="num">Número</label>
+        <input type="number" name="num" id="num">
         <input type="submit" value="Verificar">
     </main>
     <section id="resultado">
         <h2>Resultado</h2>
             <?php
+            $tot = 0;
             $n = $_GET['num'] ?? 0;
-            $c = 1;
-            if ($n == 0 || $n == '' || $n > 10) {
-                echo "Selecione um número para ver a sua tabuada!";
-            } else {
-                while ($c <= 10) {
-                    echo $n . "x" . $c . "=" . $n * $c;
-                    echo "<br/>\n";
-                    $c ++;
+            echo "Múltiplos: ";
+            for ($c = 1; $c <= $n; $c ++) {
+                if ($n % $c == 0) {
+                    echo $c . " ";
+                    $tot ++;
                 }
+            }
+            echo "<br/>Total de múltiplos: $tot";
+            if ($tot == 2) {
+                echo "<br/>Resultado $n é primo!";
+            } else {
+                echo "<br/>Resultado $n não é primo!";
             }
             ?>
     </section>

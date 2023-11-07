@@ -8,27 +8,33 @@
 </head>
 <body>
     <main>
+        <?php 
+        $c = 1;
+        ?>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
-        <label for="ini">Valor</label>
-        <input type="number" name="num" id="num" min="1" max="50" maxlength="20" >
-        <input type="submit" value="Fatorial">
+        <legend>Selecione um número</legend>
+        <select name="num" id="num">
+            <?php 
+            for ($c = 1; $c <= 10; $c ++) {
+                echo "<option value='$c'>$c </option>";
+            }
+            ?>
+        </select>
+        <input type="submit" value="Verificar">
     </main>
     <section id="resultado">
         <h2>Resultado</h2>
             <?php
-            $c = $_GET['num'] ?? 1;
-            $f = 1;
-            while ($c > 0) {
-                echo $c;
-                if ($c > 1) {
-                    echo " x ";
-                } else {
-                    echo " = ";
+            $n = $_GET['num'] ?? 0;
+            $c = 1;
+            if ($n == 0 || $n == '' || $n > 10) {
+                echo "Selecione um número para ver a sua tabuada!";
+            } else {
+                for ($c = 1; $c <= 10; $c ++) {
+                    echo $n . "x" . $c . "=" . $n * $c;
+                    echo "<br/>\n";
                 }
-                $f *= $c;
-                $c -= 1;
             }
-            echo number_format($f, 0, ',', '.');
             ?>
     </section>
 </body>

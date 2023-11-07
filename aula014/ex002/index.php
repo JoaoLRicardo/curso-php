@@ -10,9 +10,17 @@
     <section id="resultado">
         <h2>Resultado</h2>
             <?php
-            for ($c = 1; $c <= 15; $c++) {
-                echo $c . " ";
+            function soma($a, $b)
+            {
+                return $a + $b;
             }
+
+            $r = soma(33, 4);
+            echo "<p>A soma é $r</p>";
+            $x = 210;
+            $y = 230;
+            $r = soma($x, $y);
+            echo "<p>A soma entre $x e $y é $r</p>";
             ?>
     </section>
 </body>
