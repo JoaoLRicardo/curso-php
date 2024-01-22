@@ -13,7 +13,7 @@
             include "funcoes.php";
             echo "<h1>Testando novas funções</h1>";
             ola();
-            mostraValor(33);
+            mostraValor(77);
             ?>
     </section>
 </body>
